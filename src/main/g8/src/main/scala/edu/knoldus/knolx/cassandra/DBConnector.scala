@@ -8,11 +8,8 @@ object DBConnector {
   private var connector: CassandraConnection = _
 
   def getOrCreate(): CassandraConnection = {
-    if (connector == null) {
-      val hosts = cassandraHosts.split(",").map(_.trim).toSeq
-      connector = ContactPoints(hosts).keySpace(keyspace)
-    }
-
+    val hosts = cassandraHosts.split(",").map(_.trim).toSeq
+    connector = ContactPoints(hosts).keySpace(keyspace)
     connector
   }
 }
